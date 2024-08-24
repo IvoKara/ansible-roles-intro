@@ -1,0 +1,15 @@
+- name: Intro to Ansible Roles
+  hosts: cloud
+  become: true
+  tasks:
+    - name: Print a message
+      ansible.builtin.debug:
+        msg: "This task runs first and before the example role"
+
+    - name: Include the webserver role and run its tasks
+      ansible.builtin.include_role:
+        name: webserver
+
+    - name: Print a message
+      ansible.builtin.debug:
+        msg: "This task runs after the example role"
